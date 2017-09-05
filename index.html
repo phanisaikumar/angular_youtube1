@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>todo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div ng-app="myTodoList" ng-controller="myTodoCtrl">
+        <form name="frm" ng-submit="addTodo()">
+            <input type="text" name="newTodo" ng-model="newTodo" autofocus/>
+            <button ng-disabled="frm.$invalid">Go</button>
+        </form>
+        <br/>
+        <button ng-click="clearCompleted()">Clear Completed</button>
+        <hr/>
+        <ul>
+            <li ng-repeat="todo in todos">
+                <input type="checkbox" ng-model="todo.done">
+                <span ng-class="{'done':todo.done}">{{todo.title}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
